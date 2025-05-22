@@ -26,7 +26,7 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        //
+        return view("projects/new");
     }
 
     /**
@@ -37,7 +37,9 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Proyectos::create($request->all());
+        return redirect("project/")
+            ->with("success","proyecto creado satisfactoriamente");
     }
 
     /**
@@ -57,9 +59,10 @@ class ProyectoController extends Controller
      * @param  \App\Models\Proyectos  $proyectos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proyectos $proyectos)
+    public function edit($id)
     {
-        //
+        $proyecto=Proyectos::find($id);
+        return view("projects/update", compact('proyecto'));
     }
 
     /**
