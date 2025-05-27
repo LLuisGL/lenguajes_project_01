@@ -76,7 +76,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Titulo</span>
-                    <input type="text" class="form-control" id="titulo" name="nombre" value="{{$proyecto->nombre}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="text" class="form-control" id="titulo" name="titulo" value="{{$proyecto->titulo}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Descripcion</span>

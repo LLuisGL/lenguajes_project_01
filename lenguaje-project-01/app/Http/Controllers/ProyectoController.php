@@ -72,9 +72,16 @@ class ProyectoController extends Controller
      * @param  \App\Models\Proyectos  $proyectos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proyectos $proyectos)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'titulo'=>'required|max:255',
+            'descripcion'=>'required'
+        ]);
+        $proyecto=Proyectos::find($id);
+        $proyecto->update($request->all());
+        return redirect('project/')
+        ->with('success','Proyecto actualizado satisfactoriamente');
     }
 
     /**
@@ -85,6 +92,14 @@ class ProyectoController extends Controller
      */
     public function destroy(Proyectos $proyectos)
     {
-        //
+        $proyecto = Proyectos::find($id);
+        if ($proyecto) {
+            $proyecto->delete();
+            return redirect('project/')
+                ->with('success','Proyecto eliminado satisfactoriamente.');
+        } else {
+            return redirect('project/')
+                ->with('error','Proyecto no encontrado.');
+        }
     }
 }
